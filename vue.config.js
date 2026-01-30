@@ -5,13 +5,24 @@ module.exports = defineConfig({
 
   devServer: {
     proxy: {
-      // Todas las rutas que empiecen con /estudiantes se redirigen al backend
-      '/estudiantes': {
+      '/api': {  // ¡IMPORTANTE! Proxy para /api
         target: 'http://localhost:8081',
         changeOrigin: true,
         secure: false,
-        ws: true
+        logLevel: 'debug', // Añade esto para ver logs del proxy
+        pathRewrite: {
+          '^/api': '/api' // Mantiene /api en la URL
+        }
       }
+    },
+    
+    // Para debugging adicional
+    client: {
+      overlay: {
+        warnings: true,
+        errors: true
+      },
+      logging: 'verbose'
     }
   }
 })
