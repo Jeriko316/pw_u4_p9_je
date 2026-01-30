@@ -12,7 +12,7 @@ const consultarTodos = async () => {
   } catch (error) {
     console.error("Error en consultarTodos:", error.response || error);
     throw error;
-  }
+  }/////
 };
 
 // Consultar por ID
