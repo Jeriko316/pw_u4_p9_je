@@ -27,7 +27,7 @@
         >
           <div class="card-header">
             <div class="avatar">
-              {{ estudiante.name.charAt(0) }}{{ estudiante.lastName.charAt(0) }}
+              {{ (estudiante.name?.charAt(0) || '?') }}{{ (estudiante.lastName?.charAt(0) || '?') }}
             </div>
             <div class="student-name">
               <h4>{{ estudiante.name }} {{ estudiante.lastName }}</h4>
@@ -84,7 +84,7 @@
           <div v-if="hijos && hijos.length > 0" class="children-list">
             <div v-for="hijo in hijos" :key="hijo.id" class="child-item">
               <div class="child-avatar">
-                {{ hijo.name.charAt(0) }}{{ hijo.lastName.charAt(0) }}
+                {{ (hijo.name?.charAt(0) || '?') }}{{ (hijo.lastName?.charAt(0) || '?') }}
               </div>
               <div class="child-info">
                 <h4>{{ hijo.name }} {{ hijo.lastName }}</h4>

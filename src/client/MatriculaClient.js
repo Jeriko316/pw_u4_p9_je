@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // URL CORRECTA basada en lo que funciona en Postman
-const BASE_URL = "http://localhost:8080/matricula/api/v1.0/estudiantes";
+const BASE_URL = "/matricula/api/v1.0/estudiantes";
 // Listar todos los estudiantes
 const consultarTodos = async () => {
   console.log("Consultando todos los estudiantes desde:", `${BASE_URL}/todos`);
@@ -12,7 +12,7 @@ const consultarTodos = async () => {
   } catch (error) {
     console.error("Error en consultarTodos:", error.response || error);
     throw error;
-  }/////
+  } /////
 };
 
 // Consultar por ID
