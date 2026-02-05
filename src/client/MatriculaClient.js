@@ -1,4 +1,7 @@
 import axios from "axios";
+import { authenticate, setToken, logout, getToken, isAuthenticated } from "./AuthClient";
+
+// El manejo de token y la función `authenticate` se delegan a `AuthClient`.
 
 // URL CORRECTA basada en lo que funciona en Postman
 const BASE_URL = "/matricula/api/v1.0/estudiantes";
@@ -135,3 +138,6 @@ export const consultarHijosFachada = async (id) => {
 export const actualizarConResponseFachada = async (id, body) => {
   return await actualizarConResponse(id, body);
 };
+
+// Exportar funciones de autenticación para ser usadas desde la app (sin crear componente)
+export { setToken as loginWithToken, logout, getToken, isAuthenticated } from "./AuthClient";

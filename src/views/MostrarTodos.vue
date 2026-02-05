@@ -107,6 +107,7 @@ import {
   consultarTodosFachada,
   consultarHijosFachada,
 } from "@/client/MatriculaClient";
+import { authenticate, isAuthenticated } from "@/client/AuthClient";
 
 export default {
   data() {
@@ -116,6 +117,20 @@ export default {
       hijosVisibles: false,
       estudianteSeleccionado: null,
     };
+  },
+  async mounted() {
+    try {
+      if (!isAuthenticated()) {
+        const user = window.prompt("Usuario:");
+        if (user) {
+          const pass = window.prompt("Contraseña:") || "";
+          await authenticate(user.trim(), pass.trim());
+        }
+      }
+      await this.mostrarTodos();
+    } catch (err) {
+      console.error("No se pudo autenticar o cargar datos:", err);
+    }
   },
   methods: {
     async mostrarTodos() {

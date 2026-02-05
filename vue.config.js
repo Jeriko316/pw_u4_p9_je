@@ -12,6 +12,13 @@ module.exports = defineConfig({
           "^/matricula": "/matricula",
         },
       },
+      "/token": {
+        target: "http://localhost:8082",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/token": "/token",
+        },
+      },
     },
   },
 });
